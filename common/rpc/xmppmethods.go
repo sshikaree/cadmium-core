@@ -8,7 +8,7 @@ import (
 	"time"
 
 	xmpp "github.com/mattn/go-xmpp"
-	"github.com/sshikaree/cadmium_core/common/database"
+	"github.com/sshikaree/cadmium-core/common/database"
 )
 
 type Credentials struct {
