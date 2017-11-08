@@ -1,0 +1,48 @@
+html {
+    height: 100%;
+}
+body {
+    height: 100%;
+}
+.container {
+    height: 100%;
+    width: 90%;
+}
+.row {
+    margin-bottom: 0px;
+}
+#menu-row {
+    margin-bottom: 0px;
+}
+#main-row {
+    height: calc(100% - 64px);
+}
+#chat-title {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 0.5em;
+}
+#side-column {
+    overflow: auto;    
+    height: 100%;
+}
+#contacts-row {
+    min-height: 1em;
+}
+#contacts-header, #chat-rooms-header {
+    margin-top: 0.8em;
+}
+#main-column {
+    height: 100%;
+    /* padding: 0px; */
+}
+#connect-btn {
+    margin-top: 7%;
+}
+#send-message-btn {
+    margin-top: 11%;
+}
+#chat-window {
+    overflow: auto;
+    height: 66vh;
+}

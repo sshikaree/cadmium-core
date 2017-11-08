@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cadmuim Web UI</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/materialize.min.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <script src="/assets/js/jquery-3.2.1.min.js"></script>
+    <script src="/assets/js/materialize.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div id="menu-row" class="row">
+
+            <ul id="dropdown1" class="dropdown-content">
+                <li>
+                    <!-- <a href="#accounts-control-modal" class="modal-trigger">Accounts control</a> -->
+                    <a href="#" onclick="getAccounts('showAccountsControlModal');">Accounts control</a>                    
+                </li>
+                <li>
+                    <a href="#add-account-modal" class="modal-trigger">Add account</a>
+                </li>
+                <!-- <li>
+                    <a href="#">Add contact</a>
+                </li>
+                <li>
+                    <a href="#">Add chat room</a>
+                </li> -->
+            </ul>
+
+            <nav>
+                <div class="nav-wrapper blue-grey darken-2">
+                    <a href="#!" class="brand-logo center">Cadmium IM</a>
+                    <ul class="left hide-on-med-and-down">
+                        <li>
+                            <a class="dropdown-button" href="#" data-activates="dropdown1" data-constrainwidth="false">
+                                MENU
+                                <i class="material-icons right"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">SETTINGS</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+
+        <div id="main-row" class="row">
+
+            <!-- Side panel goes here -->
+            <div id="side-column" class="col s12 m3 l3 blue-grey lighten-5">
+                <div class="row">
+                    <div class="input-field col s12 m12">
+                        <select name="status-select" id="status-select">
+                            <option value="chat" selected>Chat</option>
+                            <option value="away">Away</option>
+                            <option value="dnd">Do not disturb</option>
+                            <option value="xa">Extended away</option>
+                            <option value="unavailable">Off-line</option>
+                        </select>
+                        <label>Choose status</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <h6 class="header col s8 m8 grey-text" id="contacts-header">
+                        <b>CONTACTS</b>
+                    </h6>
+                    <a href="#add-contact-modal" class="btn-floating waves-effect waves-light green modal-trigger tooltipped" data-position="top"
+                        data-delay="100" data-tooltip="Add new contact">
+                        <i class="material-icons">add</i>
+                    </a>
+                </div>
+
+                <div id="contacts-row" class="collection">
+
+                </div>
+                <div class="row">
+                    <h6 class="header col s8 m8 grey-text" id="chat-rooms-header">
+                        <b>CHAT ROOMS</b>
+                    </h6>
+                    <a href="#add-chat-modal" class="btn-floating waves-effect waves-light green modal-trigger tooltipped" data-position="top"
+                        data-delay="100" data-tooltip="Add new chat">
+                        <i class="material-icons">add</i>
+                    </a>
+                </div>
+                <div id="rooms-row" class="collection">
+
+                </div>
+
+            </div>
+
+            <!-- Main content -->
+            <div id="main-column" class="col s12 m9 l9">
+                <!-- <div class="row">
+                    <div class="input-field col s6 m4">
+                        <input type="email" id="jid">
+                        <label for="jid">JID (username@server)</label>
+                    </div>
+
+                    <div class="input-field col s6 m4">
+                        <input type="password" id="password">
+                        <label for="password">Password</label>
+                    </div>
+                    <div class="col s12 m4">
+                        <a id="connect-btn" class="waves-effect waves-light btn disabled" onclick="XMPPConnectToServer();">Connect</a>
+                    </div>
+                </div> -->
+                <div class="row blue-grey lighten-5 grey-text valign-wrapper">
+                    <h6 class="center-align" id="chat-title">SELECT CONTACT</h6>
+                </div>
+                <div id="chat-row" class="row">
+                    <!-- Chat window -->
+                    <div id="chat-window" class="col s12 m12 grey lighten-5">
+                        <!-- <div class="card blue-grey lighten-5">
+                            <div id="chat-window" class="card-content">
+
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+                <div class="row">
+                    <!-- Message input -->
+                    <div class="input-field col s10 m10 l10">
+                        <input type="text" id="message-input">
+                        <label for="message-input">Enter a message..</label>
+                    </div>
+                    <div class="col s2 m2 l2">
+                        <a id="send-message-btn" class="waves-effect waves-light btn" onclick="sendChatMessage();">Send</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Accounts control dialog -->
+    <div id="accounts-control-modal" class="modal modal-fixed-footer">
+        <div class="modal-content">
+            <h4>Accounts control</h4>
+            <table id="accounts-table">
+                <!-- Will be generated dynamically  -->
+
+                <!-- <tbody>
+                    <tr>
+                        <td>
+                            <h5>sometest@jid</h5>
+                        </td>
+                        <td>
+                            <div class="switch">
+                                <label>
+                                    Off
+                                    <input type="checkbox">
+                                    <span class="lever"></span>
+                                    On
+                                </label>
+                            </div>
+                        </td>
+                        <td>
+                            <a href="#" class="waves-effect waves-light btn">Edit</a>
+                        </td>
+                        <td>
+                            <a href="#" class="waves-effect waves-light btn red">Delete</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h5>sometest@jid</h5>
+                        </td>
+                        <td>
+                            <div class="switch">
+                                <label>
+                                    Off
+                                    <input type="checkbox">
+                                    <span class="lever"></span>
+                                    On
+                                </label>
+                            </div>
+                        </td>
+                        <td>
+                            <a href="#" class="waves-effect waves-light btn">Edit</a>
+                        </td>
+                        <td>
+                            <a href="#" class="waves-effect waves-light btn red">Delete</a>
+                        </td>
+                    </tr>
+                </tbody> -->
+            </table>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+        </div>
+    </div>
+
+    <!-- Add account modal dialog -->
+    <div id="add-account-modal" class="modal">
+        <div class="modal-content">
+            <h4>Add new account</h4>
+            <div class="row">
+                <div class="input-field col s6 m4">
+                    <select name="protocol-select" id="add-account-protocol-select">
+                        <option value="xmpp" selected>XMPP</option>
+                        <option value="irc" disabled>IRC</option>
+                        <option value="matrix" disabled>Matrix</option>
+                    </select>
+                    <label>Protocol</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6 m4">
+                    <input type="email" id="add-account-jid-input">
+                    <label for="add-account-jid-input">JID (username@server)</label>
+                </div>
+                <div class="input-field col s6 m4">
+                    <input type="password" id="add-account-password-input">
+                    <label for="add-account-password-input">Password</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s4 m2">
+                    <input type="number" id="add-account-port-input" value="5222" min="1" max="65535">
+                    <label for="add-account-port-input">Port</label>
+                </div>
+            </div>
+            <p>
+                <input type="checkbox" id="add-account-create-new-checkbox">
+                <label for="add-account-create-new-checkbox">Create new account on server</label>
+            </p>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Cancel</a>
+            <a href="#" class="modal-action waves-effect waves-green btn-flat" onclick="addAccount();">Add</a>
+        </div>
+    </div>
+
+    <!-- Add contact modal dialog -->
+    <div id="add-contact-modal" class="modal">
+        <div class="modal-content">
+            <h4>Add new contact</h4>
+            <div class="row">
+                <div class="input-field col s6 m4">
+                    <input type="email" id="add-contact-jid-input">
+                    <label for="add-contact-jid-input">JID (username@server)</label>
+                </div>
+            </div>
+
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Cancel</a>
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Add</a>
+        </div>
+
+    </div>
+
+    <!-- Add chatroom modal dialog -->
+    <div id="add-chat-modal" class="modal">
+        <div class="modal-content">
+            <h4>Add new chat room</h4>
+            <div class="row">
+                <div class="input-field col s6 m4">
+                    <input type="text" id="add-chat-room-input">
+                    <label for="add-chat-room-input">Room</label>
+                </div>
+                <div class="input-field col s6 m4">
+                    <input type="text" id="add-chat-server-input">
+                    <label for="add-chat-server-input">Server</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6 m4">
+                    <input type="text" id="add-chat-nick-input">
+                    <label for="add-chat-nick-input">Nick</label>
+                </div>
+                <div class="input-field col s6 m4">
+                    <input type="password" id="add-chat-password-input">
+                    <label for="add-chat-password-input">Password</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6 m4">
+                    <select name="group-select" id="add-chat-group-select">
+                        <option value="" disabled selected>Choose group</option>
+                        <option value="">Buddies</option>
+                        <option value="job">Job</option>
+                    </select>
+                    <label>Chat group</label>
+                </div>
+            </div>
+            <div class="row">
+                <a href="#" class="waves-effect waves-light btn">Get rooms list</a>
+            </div>
+
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Cancel</a>
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Add</a>
+        </div>
+    </div>
+
+    <script src="/assets/js/main.js"></script>
+</body>
+
+</html>
