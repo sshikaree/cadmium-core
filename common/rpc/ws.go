@@ -4,7 +4,7 @@ import (
 	"log"
 	"sync"
 
-	"github.com/sshikaree/wswrapper"
+	"github.com/sshikaree/cadmium-core/common/rpc/wswrapper"
 )
 
 var (

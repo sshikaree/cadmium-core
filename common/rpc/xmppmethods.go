@@ -183,8 +183,8 @@ func (m *XMPP) SetStatus(s *Status, reply *string) error {
 	return nil
 }
 func (m *XMPP) SendMessage(msg *Message, reply *string) error {
-	log.Println("xmppHub.Len():", xmppHub.Len())
-	log.Println(xmppHub.connections)
+	// log.Println("xmppHub.Len():", xmppHub.Len())
+	// log.Println(xmppHub.connections)
 
 	client, ok := xmppHub.Get(msg.From)
 	if !ok {

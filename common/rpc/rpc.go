@@ -10,7 +10,7 @@ import (
 	"os"
 
 	"github.com/sshikaree/cadmium-core/common/database"
-	"github.com/sshikaree/wswrapper"
+	"github.com/sshikaree/cadmium-core/common/rpc/wswrapper"
 
 	"github.com/gorilla/websocket"
 	// "golang.org/x/net/websocket"
