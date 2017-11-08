@@ -3,9 +3,9 @@ package main
 import (
 	"log"
 
-	"github.com/sshikaree/cadmium_core/common/database"
-	"github.com/sshikaree/cadmium_core/common/rpc"
-	"github.com/sshikaree/cadmium_core/common/webinterface"
+	"github.com/sshikaree/cadmium-core/common/database"
+	"github.com/sshikaree/cadmium-core/common/rpc"
+	"github.com/sshikaree/cadmium-core/common/webinterface"
 )
 
 func main() {
